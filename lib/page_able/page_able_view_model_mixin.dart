@@ -4,8 +4,10 @@ mixin PageAbleViewModelMixin {
   List list = [];
 
   int get currentPage {
-    return (list.length ~/ pageSize);
+    return initialPage + (list.length ~/ pageSize);
   }
+
+  int get initialPage => 0;
 
   int get pageSize;
 

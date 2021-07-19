@@ -55,10 +55,10 @@ mixin PageAbleMixin<T extends StatefulWidget> on State<T> {
       enablePullDown: enablePullDown,
       enablePullUp: enablePullUp,
       header: CustomHeader(
-        builder: (BuildContext context, RefreshStatus mode) {
-          Widget body;
+        builder: (BuildContext context, RefreshStatus? mode) {
+          Widget? body;
 
-          switch (mode) {
+          switch (mode ?? RefreshStatus.idle) {
             case RefreshStatus.idle:
               body = Text("下拉刷新", style: TextStyle(color: Colors.grey));
               break;
@@ -105,9 +105,9 @@ mixin PageAbleMixin<T extends StatefulWidget> on State<T> {
         },
       ),
       footer: CustomFooter(
-        builder: (BuildContext context, LoadStatus mode) {
-          Widget body;
-          switch (mode) {
+        builder: (BuildContext context, LoadStatus? mode) {
+          Widget? body;
+          switch (mode ?? LoadStatus.idle) {
             case LoadStatus.idle:
               body = Text("上拉加载更多", style: TextStyle(color: Colors.grey));
               break;
